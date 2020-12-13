@@ -21,12 +21,13 @@ HeatTransferLibrary::HeatTransferLibrary(double const &rho, double const &Cp, do
     ReCritical = 0;
     flowCondition = "";
     resultType = "";
+    status = "";
 }
 
 double HeatTransferLibrary::find_reynolds_number(double const &velocity, double const &characteristicLength)
 {
     Re = velocity * characteristicLength / nu;
-
+    status = "Reynolds number found.";
     return Re;
 }
 
@@ -47,12 +48,14 @@ std::string HeatTransferLibrary::determine_flow_condition(double const &critical
     {
         flowCondition = "turbulent";
     }
+    status = "Flow condition found.";
 
     return flowCondition;
 }
 
 void HeatTransferLibrary::set_result_type(std::string const &resultType)
 {
+    status = "Result type set to " + resultType + ".";
     this->resultType = resultType;
 }
 
@@ -92,20 +95,27 @@ void HeatTransferLibrary::find_nusselt_number_laminar_local()
     {
         set_nusselt_number_laminar_local_smaller_Pr();
     }
+    else
+    {
+        status = "Prandtl number not within bounds";
+    }
 }
 
 void HeatTransferLibrary::set_nusselt_number_laminar_local_larger_Pr()
 {
+    status = "Nusselt number found.";
     Nu = 0.332 * pow(Re, 0.5) * pow(Pr, 0.33);
 }
 
 void HeatTransferLibrary::set_nusselt_number_laminar_local_smaller_Pr()
 {
+    status = "Nusselt number found.";
     Nu = 0.565 * pow(Pr, 0.5);
 }
 
 void HeatTransferLibrary::set_nusselt_number_laminar_average()
 {
+    status = "Nusselt number found.";
     Nu = 0.664 * pow(Re, 0.5) * pow(Pr, 0.33);
 }
 
@@ -117,7 +127,13 @@ void HeatTransferLibrary::find_nusselt_number_turbulent()
 
 void HeatTransferLibrary::set_nusselt_number_turbulent_local()
 {
+    status = "Nusselt number found.";
     Nu = 0.0296 * pow(Re, 0.8) * pow(Pr, 0.33);
+}
+
+std::string HeatTransferLibrary::get_status()
+{
+    return status;
 }
 
 

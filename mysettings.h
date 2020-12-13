@@ -2,6 +2,8 @@
 #define MYSETTINGS_H
 
 #include <QDialog>
+#include <QAbstractButton>
+#include <iostream>
 
 namespace Ui {
 class MySettings;
@@ -15,8 +17,15 @@ public:
     explicit MySettings(QWidget *parent = nullptr);
     ~MySettings();
 
-    QString getMinimumText();
-    QString getMaximumText();
+    double getDensity();
+    double getSpecificHeat();
+    double getDynamicViscosity();
+    double getKinematicViscosity();
+    double getThermalConductivity();
+    double getThermalDiffusivity();
+    double getPrandtlNumber();
+    double getBeta();
+
 
 private:
     Ui::MySettings *ui;

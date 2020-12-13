@@ -16,11 +16,16 @@ class StuffPanel : public QWidget
 public:
     explicit StuffPanel(QWidget *parent = nullptr);
     ~StuffPanel();
+    void load_thermophysical_properties(double rho, double Cp, double mu,
+                                        double nu, double k, double alpha,
+                                        double Pr, double beta);
+    void enable_functions_to_calculate_reynolds_number();
+
 signals:
     void stuff_done(QString);
 
 public slots:
-    void on_colorButton_clicked();
+//    void on_colorButton_clicked();
     void on_printData_clicked();
 private slots:
     void on_findReynolds_clicked();

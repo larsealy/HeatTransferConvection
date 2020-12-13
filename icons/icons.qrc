@@ -2,5 +2,6 @@
     <qresource prefix="/myicons">
         <file>doughnut_64x64.png</file>
         <file>balloons_64x64.png</file>
+        <file>settingsIcon.png</file>
     </qresource>
 </RCC>

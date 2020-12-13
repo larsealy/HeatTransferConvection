@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindowform.h"
 #include "outputwindow.h"
-#include "StuffPanel.h"
+#include "stuffpanel.h"
 #include "mysettings.h"
 
 #include <QDockWidget>
@@ -21,10 +21,10 @@ QAction * MainWindow::create_doughnut_action()
 
 QAction * MainWindow::create_settings_action()
 {
-    const QIcon settingsIcon = QIcon(":myicons/balloons_64x64.png");
-    QAction *settingsAction = new QAction(settingsIcon, tr("&Change Settings"), this);
+    const QIcon settingsIcon = QIcon(":myicons/settingsIcon.png");
+    QAction *settingsAction = new QAction(settingsIcon, tr("&Change Thermalphysical Properties"), this);
     settingsAction->setShortcut(QKeySequence{tr("Ctrl+B")});
-    settingsAction->setStatusTip(tr("Change Settings"));
+    settingsAction->setStatusTip(tr("Change Thermalphysical Properties"));
     connect(settingsAction, &QAction::triggered, this, &MainWindow::update_settings);
 
     return settingsAction;
@@ -54,7 +54,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setCentralWidget(mStuffPanel);
 
     connect(mStuffPanel, SIGNAL(stuff_done(QString)),mOutputWindow,SLOT(print_string(QString)));
-
+//    connect(mStuffPanel, SIGNAL(stuff_done2(QString)),mOutputWindow,SLOT(print_string(QString)));
 
     create_toolbar();
 }
@@ -84,10 +84,21 @@ void MainWindow::update_settings()
     MySettings* settings = new MySettings(this);
     if(settings->exec()==QDialog::Accepted)
     {
-        QString message= "Minimum " + settings->getMinimumText();
-        mOutputWindow->print_string(message);
-        message= "Maximum " + settings->getMaximumText();
-        mOutputWindow->print_string(message);
+        double rho = settings->getDensity();
+        double Cp = settings->getSpecificHeat();
+        double mu = settings->getDynamicViscosity();
+        double nu = settings->getKinematicViscosity();
+        double k = settings->getThermalConductivity();
+        double alpha = settings->getThermalDiffusivity();
+        double Pr = settings->getPrandtlNumber();
+        double beta = settings->getBeta();
+        mStuffPanel->load_thermophysical_properties(rho, Cp, mu, nu, k, alpha, Pr, beta);
+        mOutputWindow->print_string("Thermophysical properties loaded.\n");
+        mStuffPanel->enable_functions_to_calculate_reynolds_number();
+//        QString message= "Minimum " + settings->getMinimumText();
+//        mOutputWindow->print_string(message);
+//        message= "Maximum " + settings->getMaximumText();
+//        mOutputWindow->print_string(message);
     }
 }
 

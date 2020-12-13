@@ -16,6 +16,7 @@ public:
     std::string determine_flow_condition(double const &criticalReynoldsNumber);
     void set_result_type(std::string const &resultType);
     double get_nusselt_number();
+    std::string get_status();
 
 private:
     double rho;
@@ -32,6 +33,7 @@ private:
     double ReCritical;
     std::string flowCondition;
     std::string resultType;
+    std::string status;
 
     void find_nusselt_number_laminar();
     void find_nusselt_number_laminar_local();

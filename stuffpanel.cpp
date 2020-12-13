@@ -12,19 +12,28 @@ StuffPanel::StuffPanel(QWidget *parent) :
     ui->setupUi(this);
 
     QDoubleValidator* doubleValidator = new QDoubleValidator;
-//    ui->initialVelocity->setValidator(doubleValidator);
+    ui->velocityValue->setValidator(doubleValidator);
+    ui->characteristicLengthValue->setValidator(doubleValidator);
 }
 
 StuffPanel::~StuffPanel()
 {
     delete ui;
 }
-void StuffPanel::on_colorButton_clicked()
+
+void StuffPanel::load_thermophysical_properties(double rho, double Cp, double mu,
+                                    double nu, double k, double alpha,
+                                    double Pr, double beta)
 {
-    QColor color = QColorDialog::getColor();
-    ui->selectedColor->setText(color.name());
-    ui->selectedColor->setPalette(QPalette(color));
-    ui->selectedColor->setAutoFillBackground(true);
+    heatTransferLibrary = new HeatTransferLibrary(rho, Cp, mu, nu,
+                                                  k, alpha, Pr, beta);
+}
+
+void StuffPanel::enable_functions_to_calculate_reynolds_number()
+{
+    ui->velocityValue->setEnabled(true);
+    ui->characteristicLengthValue->setEnabled(true);
+    ui->findReynolds->setEnabled(true);
 }
 
 void StuffPanel::on_printData_clicked()
@@ -43,27 +52,13 @@ void StuffPanel::on_printData_clicked()
     heatTransferLibrary->set_result_type(resultType);
     double nusseltNumber = heatTransferLibrary->get_nusselt_number();
 
+    QString message = QString::fromStdString(heatTransferLibrary->get_status());
+    emit(stuff_done(message));
     ui->nusseltNumberValue->setText(QString::number(nusseltNumber));
-
-//    QString message;
-//    message="Color "+ui->selectedColor->text()+"\n";
-////    message+="Initial Velocity "+ui->initialVelocity->text()+"\n";
-//    emit(stuff_done(message));
 }
 
 void StuffPanel::on_findReynolds_clicked()
 {
-    double rho = ui->densityValue->text().toDouble();
-    double Cp = ui->specificHeatValue->text().toDouble();
-    double mu = ui->dynamicViscosityValue->text().toDouble();
-    double nu = ui->kinematicViscosityValue->text().toDouble();
-    double k = ui->thermalConductivityValue->text().toDouble();
-    double alpha = ui->thermalDiffusivityValue->text().toDouble();
-    double Pr = ui->prandtlNumberValue->text().toDouble();
-    double beta = ui->betaValue->text().toDouble();
-
-    heatTransferLibrary = new HeatTransferLibrary(rho, Cp, mu, nu,
-                                                  k, alpha, Pr, beta);
 
     double velocity = ui->velocityValue->text().toDouble();
     double characteristicLength = ui->characteristicLengthValue->text().toDouble();
@@ -75,9 +70,4 @@ void StuffPanel::on_findReynolds_clicked()
 
     ui->resultType->setEnabled(true);
     ui->printData->setEnabled(true);
-
-//    QString message2;
-//    message2=ui->densityValue->text()+"\n";
-//    emit(stuff_done(message2));
-
 }

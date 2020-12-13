@@ -6,6 +6,7 @@
 
 class OutputWindow;
 class StuffPanel;
+class MySettings;
 
 
 namespace Ui {
@@ -23,6 +24,7 @@ public:
 public slots:
     void on_actionExit_triggered();
     void stuff_done(QString message);
+//    void stuff_done2(QString message);
     void eat_doughnut();
     void update_settings();
 protected:
@@ -35,6 +37,7 @@ private:
     QDockWidget* mDockWidget;
     OutputWindow* mOutputWindow;
     StuffPanel* mStuffPanel;
+    MySettings* mMySettings;
 
 };
 

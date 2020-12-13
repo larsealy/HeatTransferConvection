@@ -7,14 +7,31 @@
     <x>0</x>
     <y>0</y>
     <width>845</width>
-    <height>493</height>
+    <height>354</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="14" column="2">
+   <item row="9" column="2">
+    <widget class="QLabel" name="reynoldsNumberValue">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+       <underline>true</underline>
+      </font>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer">
@@ -44,28 +61,17 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="2">
-    <widget class="QLabel" name="selectedColor">
+   <item row="8" column="2">
+    <widget class="QPushButton" name="findReynolds">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="text">
-      <string/>
+      <string>Calculate Reynolds Number</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="specificHeatDescriptor">
-     <property name="text">
-      <string>Specific Heat, Cp (J/kgK) = </string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="thermalConductivityDescriptor">
-     <property name="text">
-      <string>Thermal Conductivity, k (W/mK) = </string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="1">
+   <item row="9" column="1">
     <widget class="QLabel" name="reynoldsNumber">
      <property name="text">
       <string>Reynolds Number, Re = </string>
@@ -75,82 +81,18 @@
      </property>
     </widget>
    </item>
-   <item row="8" column="0">
-    <widget class="QLabel" name="prandtlNumberDescriptor">
-     <property name="text">
-      <string>Prandtl Number, Pr = </string>
-     </property>
-    </widget>
-   </item>
-   <item row="13" column="3">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="8" column="1">
-    <widget class="QLineEdit" name="prandtlNumberValue"/>
-   </item>
    <item row="7" column="1">
-    <widget class="QLineEdit" name="thermalDiffusivityValue"/>
-   </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="densityValue">
-     <property name="text">
-      <string/>
+    <widget class="QLineEdit" name="characteristicLengthValue">
+     <property name="enabled">
+      <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="densityDescriptor">
-     <property name="text">
-      <string>Density, ρ (kg/m^3) = </string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="1">
-    <widget class="QLineEdit" name="betaValue"/>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="kinematicViscosityDescriptor">
-     <property name="text">
-      <string>Kinematic Viscosity, ν (m^2/s) = </string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="2">
-    <widget class="QLabel" name="reynoldsNumberValue">
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-       <underline>true</underline>
-      </font>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="specificHeatValue">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
+   <item row="1" column="1">
     <widget class="QRadioButton" name="flatPlateRadioButton">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="text">
       <string>Flat Plate</string>
      </property>
@@ -162,78 +104,23 @@
      </property>
     </widget>
    </item>
-   <item row="11" column="1">
-    <widget class="QLabel" name="flowTypeDescriptor">
+   <item row="12" column="1">
+    <widget class="QLabel" name="nusseltNumberDescriptor">
      <property name="text">
-      <string>The flow is </string>
+      <string>Nusselt Number, Nu = </string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="thermalDiffusivityDescriptor">
-     <property name="text">
-      <string>Thermal Diffusivity, α (m^2/s) = </string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="flowGeometry">
-     <property name="text">
-      <string>Geometry Type</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="dynamicViscosityDescriptor">
-     <property name="text">
-      <string>Dynamic Viscosity, μ (Ns/m^2) = </string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="0">
-    <widget class="QLabel" name="betaDescriptor">
-     <property name="text">
-      <string>Beta, β (1/K) = </string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QLineEdit" name="thermalConductivityValue"/>
-   </item>
-   <item row="11" column="2">
-    <widget class="QLabel" name="flowTypeValue">
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-       <underline>true</underline>
-      </font>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QLineEdit" name="dynamicViscosityValue">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="0" colspan="2">
+   <item row="11" column="0" colspan="2">
     <widget class="QGroupBox" name="resultType">
      <property name="enabled">
       <bool>false</bool>
      </property>
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>2</verstretch>
       </sizepolicy>
@@ -241,7 +128,7 @@
      <property name="minimumSize">
       <size>
        <width>10</width>
-       <height>10</height>
+       <height>50</height>
       </size>
      </property>
      <property name="title">
@@ -278,17 +165,45 @@
      </widget>
     </widget>
    </item>
-   <item row="13" column="1">
-    <widget class="QLabel" name="nusseltNumberDescriptor">
+   <item row="7" column="0">
+    <widget class="QLabel" name="characteristicLengthDescriptor">
      <property name="text">
-      <string>Nusselt Number, Nu = </string>
+      <string>Characteristic Length, x (m)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
+    <widget class="QLabel" name="flowTypeDescriptor">
+     <property name="text">
+      <string>The flow is </string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="13" column="2">
+   <item row="5" column="0">
+    <widget class="QLabel" name="velocity">
+     <property name="text">
+      <string>Velocty, v (m/s)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QLabel" name="selectedColor">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLineEdit" name="velocityValue">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="2">
     <widget class="QLabel" name="nusseltNumberValue">
      <property name="font">
       <font>
@@ -305,42 +220,71 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="2">
-    <widget class="QPushButton" name="findReynolds">
+   <item row="1" column="0">
+    <widget class="QLabel" name="flowGeometry">
      <property name="text">
-      <string>Calculate Reynolds Number</string>
+      <string>Geometry Type</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="2">
-    <widget class="QLabel" name="velocityDescriptor">
-     <property name="text">
-      <string>Velocty, v (m/s) = vvv</string>
+   <item row="10" column="2">
+    <widget class="QLabel" name="flowTypeValue">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+       <underline>true</underline>
+      </font>
      </property>
-    </widget>
-   </item>
-   <item row="3" column="2">
-    <widget class="QLineEdit" name="velocityValue"/>
-   </item>
-   <item row="5" column="1">
-    <widget class="QLineEdit" name="kinematicViscosityValue">
-     <property name="inputMask">
-      <string extracomment="00"/>
+     <property name="autoFillBackground">
+      <bool>true</bool>
      </property>
      <property name="text">
       <string/>
      </property>
     </widget>
    </item>
-   <item row="4" column="2">
-    <widget class="QLabel" name="characteristicLengthDescriptor">
+   <item row="0" column="1">
+    <widget class="QLabel" name="instructions1">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>Characteristic Length, x (m) = vvv</string>
+      <string>Use the settings button to load the thermophysical properties.</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
-   <item row="5" column="2">
-    <widget class="QLineEdit" name="characteristicLengthValue"/>
+   <item row="11" column="3" rowspan="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="11" column="2">
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
