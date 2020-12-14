@@ -30,9 +30,23 @@ public slots:
 private slots:
     void on_findReynolds_clicked();
 
+    void on_externalRadioButton_toggled(bool checked);
+
+    void on_internalRadioButton_toggled(bool checked);
+
+    void on_naturalRadioButton_toggled(bool checked);
+
 private:
     Ui::StuffPanel *ui;
     HeatTransferLibrary *heatTransferLibrary;
+    std::string flowType;
+    std::string flowGeometry;
+
+    void set_visibility_for_flow_geometry_options(bool toggle);
+    void set_visibility_for_reynolds_number_features(bool toggle);
+    void set_visibility_for_reynolds_number_answer(bool toggle);
+    void set_visibility_for_nusselt_number_features(bool toggle);
+    void set_visibility_for_nusselt_number_answer(bool toggle);
 };
 
 #endif // STUFFPANEL_H

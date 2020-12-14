@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Thermophysical Properties</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="5" column="0">
@@ -144,6 +144,16 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>densityValue</tabstop>
+  <tabstop>specificHeatValue</tabstop>
+  <tabstop>dynamicViscosityValue</tabstop>
+  <tabstop>kinematicViscosityValue</tabstop>
+  <tabstop>thermalConductivityValue</tabstop>
+  <tabstop>thermalDiffusivityValue</tabstop>
+  <tabstop>prandtlNumberValue</tabstop>
+  <tabstop>betaValue</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

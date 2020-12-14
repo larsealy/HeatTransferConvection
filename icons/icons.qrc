@@ -3,5 +3,7 @@
         <file>doughnut_64x64.png</file>
         <file>balloons_64x64.png</file>
         <file>settingsIcon.png</file>
+        <file>icon-flame-red.png</file>
+        <file>question_mark_icon.png</file>
     </qresource>
 </RCC>

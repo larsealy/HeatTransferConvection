@@ -14,6 +14,9 @@ class OutputWindow : public QWidget
  public:
     explicit OutputWindow(QWidget *parent = 0);
     ~OutputWindow();
+
+    void clear_output_window();
+
 public slots:
     void print_string(QString s);
 

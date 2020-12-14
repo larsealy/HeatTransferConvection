@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtCore>
+#include <string>
 
 class OutputWindow;
 class StuffPanel;
@@ -23,9 +24,10 @@ public:
 
 public slots:
     void on_actionExit_triggered();
+    void on_actionClear_Output_Window_triggered();
     void stuff_done(QString message);
 //    void stuff_done2(QString message);
-    void eat_doughnut();
+    void print_convection_instructions();
     void update_settings();
 protected:
     void create_toolbar();

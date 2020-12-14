@@ -17,3 +17,8 @@ OutputWindow::~OutputWindow()
 {
     delete ui;
 }
+
+void OutputWindow::clear_output_window()
+{
+    ui->mOutputText->clear();
+}

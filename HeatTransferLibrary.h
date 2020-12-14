@@ -2,16 +2,17 @@
 #define HEATTRANSFERLIBRARY_H
 
 #include <iostream>
-
+#include <string>
 
 class HeatTransferLibrary
 {
 public:
     HeatTransferLibrary();
-    HeatTransferLibrary(double const &rho, double const &Cp, double const &mu, double const &nu,
+    HeatTransferLibrary(std::string const &flowType, std::string const &flowGeometry,
+                        double const &rho, double const &Cp, double const &mu, double const &nu,
                         double const &k, double const &alpha, double const &Pr, double const &beta);
 
-    double find_reynolds_number(double const &velocity, double const &characteristicLength);
+    double find_reynolds_number(double const &velocity, double const &characteristicLength, bool &neglectMixedBL);
     std::string determine_flow_condition();
     std::string determine_flow_condition(double const &criticalReynoldsNumber);
     void set_result_type(std::string const &resultType);
@@ -19,6 +20,8 @@ public:
     std::string get_status();
 
 private:
+    std::string mFlowType;
+    std::string mFlowGeometry;
     double rho;
     double Cp;
     double mu;
@@ -34,6 +37,14 @@ private:
     std::string flowCondition;
     std::string resultType;
     std::string status;
+    bool mNeglectMixedBL;
+
+    double mCharacteristicLength;
+    double mCriticalLength;
+    double mVelocity;
+
+    void determine_if_mixed_boundary_layer();
+    void find_critical_length();
 
     void find_nusselt_number_laminar();
     void find_nusselt_number_laminar_local();
@@ -43,6 +54,10 @@ private:
 
     void find_nusselt_number_turbulent();
     void set_nusselt_number_turbulent_local();
+    void set_nusselt_number_turbulent_average();
+
+    void find_nusselt_number_mixed();
+    void set_nusselt_number_mixed_average();
 
 
 };
